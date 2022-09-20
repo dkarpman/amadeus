@@ -39,14 +39,13 @@ fn main() {
 		.build()
 		.unwrap()
 		.block_on(async {
-			return; // TODO: runs for a long time
 
 			// Accept the number of processes at the command line, defaulting to the maximum available
 			let processes = env::args().nth(1).and_then(|arg| arg.parse::<usize>().ok());
 
 			let pool = ProcessPool::new(processes, None, None, Resources::default()).unwrap();
 
-			let webpages = CommonCrawl::new("CC-MAIN-2020-24").await.unwrap();
+			let webpages = CommonCrawl::new("CC-MAIN-2022-33").await.unwrap();
 
 			let (count, (most_frequent_ips, most_diverse_ips)) = webpages
 				.dist_stream()
