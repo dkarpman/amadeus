@@ -21,7 +21,7 @@ async fn main() {
 
 	let pool = ThreadPool::new(None, None).unwrap();
 
-	let webpages = CommonCrawl::new("CC-MAIN-2020-24").await.unwrap();
+	let webpages = CommonCrawl::new("CC-MAIN-2022-33").await.unwrap();
 
 	let (count, (most_frequent_ips, most_diverse_ips)) = webpages
 		.dist_stream()
