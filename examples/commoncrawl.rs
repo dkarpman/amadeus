@@ -17,8 +17,6 @@ use amadeus::{data::Webpage, dist::prelude::*};
 #[allow(unreachable_code)]
 #[tokio::main]
 async fn main() {
-	return; // TODO: runs for a long time
-
 	let pool = ThreadPool::new(None, None).unwrap();
 
 	let webpages = CommonCrawl::new("CC-MAIN-2022-33").await.unwrap();
