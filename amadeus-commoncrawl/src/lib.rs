@@ -53,7 +53,7 @@ impl CommonCrawl {
 	/// CC-MAIN-2020-24
 	pub async fn new(id: &str) -> Result<Self, reqwest::Error> {
 		let url = format!(
-			"https://commoncrawl.s3.amazonaws.com/crawl-data/{}/warc.paths.gz",
+			"https://data.commoncrawl.org/crawl-data/{}/warc.paths.gz",
 			id
 		);
 		let body = reqwest::ClientBuilder::new()
@@ -74,7 +74,7 @@ impl CommonCrawl {
 		let urls = BufReader::new(body)
 			.lines()
 			.map(|url: Result<String, io::Error>| -> String {
-				format!("http://commoncrawl.s3.amazonaws.com/{}", url.unwrap())
+				format!("https://data.commoncrawl.org/{}", url.unwrap())
 			})
 			.collect()
 			.await;
